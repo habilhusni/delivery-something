@@ -15,8 +15,8 @@ import Maps from './Maps';
 
 const App = StackNavigator(
   {
-    Home : { screen: Home },
-    Maps : { screen: Maps },
+    Maps    : { screen: Maps },
+    Home    : { screen: Home },
   },
   {
     headerMode: 'none',
