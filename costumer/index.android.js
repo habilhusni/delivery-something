@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { AppRegistry } from 'react-native';
+import { applyMiddleware, createStore } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
-import store from './src/store';
 import App from './src/components';
+import reducers from './src/reducers';
+
+const store = createStore(reducers, applyMiddleware(thunk, logger));
 
 export default class deliverysomething extends Component {
   render() {
     return (
-      <Provider>
+      <Provider store={store}>
         <App />
       </Provider>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -9,6 +10,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import MapView from 'react-native-maps';
 import RNGooglePlaces from 'react-native-google-places';
+
+import { getData, updateData } from '../actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,7 +39,7 @@ class Maps extends Component {
       latitude: 0,
       longitude: 0,
       title: '',
-      place: 'empty',
+      place: '',
       region: {
         latitude: 0,
         longitude: 0,
@@ -48,6 +51,7 @@ class Maps extends Component {
   }
 
   getInitialData() {
+    this.props.getData();
     const { region } = this.state;
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -55,6 +59,7 @@ class Maps extends Component {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           title: 'You are here',
+          place: 'Home',
         })
         this._onRegionChange({
           latitude: position.coords.latitude,
@@ -76,21 +81,35 @@ class Maps extends Component {
     this.setState({ region })
   }
 
+  savedThisLocation(state) {
+    var { id, body } = this.objData;
+    var { place, longitude, latitude } = body;
+    this.setObjData({
+      body: {
+        place: state.place,
+        longitude: state.longitude,
+        latitude: state.latitude,
+      }
+    })
+    this.props.updateData({ id, body });
+  }
+
   openSearchModal() {
     RNGooglePlaces.openAutocompleteModal({
       country: 'ID',
       useOverlay: true,
     })
-    .then((place) => {
-		  console.log(place);
+    .then((tempat) => {
+		  console.log(tempat);
       this.setState({
-        latitude: place.latitude,
-        longitude: place.longitude,
+        latitude: tempat.latitude,
+        longitude: tempat.longitude,
         title: 'You picked place here',
+        place: tempat.address,
       })
       this._onRegionChange({
-        latitude: place.latitude,
-        longitude: place.longitude,
+        latitude: tempat.latitude,
+        longitude: tempat.longitude,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       })
@@ -100,7 +119,7 @@ class Maps extends Component {
 
   render() {
     const { latitude, longitude, title, region } = this.state;
-    const that = this;
+    console.log(`wkwkwkwk${JSON.stringify(this.props.datas)}`);
 
     return(
       <View style={styles.container}>
@@ -127,9 +146,10 @@ class Maps extends Component {
             </Button>
             <Button
               success
+              onPress={() => this.savedThisLocation(that.state)}
               style={{ marginTop: 10, marginLeft: 50, }}
             >
-              <Text>Save Place</Text>
+              <Text>Save This Place</Text>
             </Button>
           </View>
           <View style={{ flex: 1, alignSelf: 'flex-end', marginRight: 40, marginBottom: 10 }}>
@@ -146,7 +166,7 @@ class Maps extends Component {
         </View>
 
         <View style={{ marginBottom: 20 }}>
-          <Text>{that.state.place}</Text>
+          <Text>{this.state.place}</Text>
         </View>
 
       </View>
@@ -154,4 +174,13 @@ class Maps extends Component {
   }
 }
 
-export default Maps;
+const mapStateToProps = state => ({
+  datas: state.datas,
+})
+
+const mapDispatchToProps = dispatch => ({
+  getData: () => dispatch(getData()),
+  updateData: data => dispatch(updateData(data)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Maps);

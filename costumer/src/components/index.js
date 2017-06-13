@@ -6,6 +6,8 @@ import {
   Button,
 } from 'react-native';
 
+import { getData } from '../actions';
+
 import {
   StackNavigator,
 } from 'react-navigation';
