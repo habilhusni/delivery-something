@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    bottom: 50,
+    bottom: 80,
   },
 });
 
@@ -40,17 +40,16 @@ class Maps extends Component {
       longitude: 0,
       title: '',
       place: '',
-      region: {
         latitude: 0,
         longitude: 0,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       }
-    }
 
   }
 
   getInitialData() {
+    this.props.getData();
     const { region } = this.state;
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -73,7 +72,6 @@ class Maps extends Component {
   }
 
   componentDidMount() {
-    this.props.getData();
     this.getInitialData();
   }
 
@@ -81,17 +79,20 @@ class Maps extends Component {
     this.setState({ region })
   }
 
+  isDataHadir() {
+    if(this.props.datas[0] === undefined) {
+      return false
+    } else {
+      return true
+    }
+  }
+
   savedThisLocation(state) {
-    var { id, body } = this.objData;
-    var { place, longitude, latitude } = body;
-    this.setObjData({
-      body: {
-        place: state.place,
-        longitude: state.longitude,
-        latitude: state.latitude,
-      }
-    })
-    this.props.updateData({ id, body });
+    const { _id } = this.props.datas[0];
+    const { place, longitude, latitude } = state;
+    const body = { place, longitude, latitude }
+
+    this.props.updateData({ _id, body });
   }
 
   openSearchModal() {
@@ -146,13 +147,13 @@ class Maps extends Component {
             </Button>
             <Button
               success
-              onPress={() => this.savedThisLocation(that.state)}
+              onPress={() => this.savedThisLocation(this.state)}
               style={{ marginTop: 10, marginLeft: 50, }}
             >
               <Text>Save This Place</Text>
             </Button>
           </View>
-          <View style={{ flex: 1, alignSelf: 'flex-end', marginRight: 40, marginBottom: 10 }}>
+          <View style={{ flex: 1, alignSelf: 'flex-end', marginRight: 60, marginBottom: 30 }}>
             <Fab
               active={false}
               direction="right"
@@ -165,8 +166,12 @@ class Maps extends Component {
           </View>
         </View>
 
-        <View style={{ marginBottom: 20 }}>
-          <Text>{this.props.datas[0].place}</Text>
+        <View style={{ marginBottom: 10 }}>
+          {this.isDataHadir() ? (
+            <Text>Saved location: {this.props.datas[0].place}</Text>
+          ) : (
+            <Text>Waiting data...</Text>
+          )}
         </View>
 
       </View>

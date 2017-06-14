@@ -36,7 +36,7 @@ export const deleteDataFail = error => ({
   error,
 })
 
-const HTTPS = 'http://deliverysomething.herokuapp.com';
+const HTTPS = 'https://deliverysomething.herokuapp.com';
 
 export const getData = () => (
   dispatch => (
@@ -73,7 +73,7 @@ export const createData = data => (
 
 export const updateData = data => (
   dispatch => (
-    fetch(`${HTTPS}/data/${data.id}`, {
+    fetch(`${HTTPS}/data/${data._id}`, {
       method: 'put',
       body: JSON.stringify(data.body),
       headers: {
@@ -83,6 +83,7 @@ export const updateData = data => (
     })
     .then((res) => res.json())
     .then((data) => dispatch(updateDataSuccess(data)))
+    .then(() => dispatch(getData()))
     .catch((err) => dispatch(updateDataFail(err)))
   )
 )
