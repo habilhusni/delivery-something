@@ -51,7 +51,6 @@ class Maps extends Component {
   }
 
   getInitialData() {
-    this.props.getData();
     const { region } = this.state;
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -74,6 +73,7 @@ class Maps extends Component {
   }
 
   componentDidMount() {
+    this.props.getData();
     this.getInitialData();
   }
 
@@ -166,7 +166,7 @@ class Maps extends Component {
         </View>
 
         <View style={{ marginBottom: 20 }}>
-          <Text>{this.state.place}</Text>
+          <Text>{this.props.datas[0].place}</Text>
         </View>
 
       </View>
