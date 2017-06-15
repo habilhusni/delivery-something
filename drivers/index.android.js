@@ -10,7 +10,7 @@ import reducers from './src/reducers';
 
 const store = createStore(reducers, applyMiddleware(thunk, logger));
 
-export default class deliverysomething extends Component {
+export default class drivers extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -20,4 +20,4 @@ export default class deliverysomething extends Component {
   }
 }
 
-AppRegistry.registerComponent('deliverysomething', () => deliverysomething);
+AppRegistry.registerComponent('drivers', () => drivers);
