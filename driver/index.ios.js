@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-export default class driver extends Component {
+export default class deliverysomething extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('driver', () => driver);
+AppRegistry.registerComponent('deliverysomething', () => deliverysomething);

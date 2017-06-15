@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "driver-tvOS.app"
-               BlueprintName = "driver-tvOS"
-               ReferencedContainer = "container:driver.xcodeproj">
+               BuildableName = "deliverysomething-tvOS.app"
+               BlueprintName = "deliverysomething-tvOS"
+               ReferencedContainer = "container:deliverysomething.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "driver-tvOSTests.xctest"
-               BlueprintName = "driver-tvOSTests"
-               ReferencedContainer = "container:driver.xcodeproj">
+               BuildableName = "deliverysomething-tvOSTests.xctest"
+               BlueprintName = "deliverysomething-tvOSTests"
+               ReferencedContainer = "container:deliverysomething.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "driver-tvOSTests.xctest"
-               BlueprintName = "driver-tvOSTests"
-               ReferencedContainer = "container:driver.xcodeproj">
+               BuildableName = "deliverysomething-tvOSTests.xctest"
+               BlueprintName = "deliverysomething-tvOSTests"
+               ReferencedContainer = "container:deliverysomething.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "driver-tvOS.app"
-            BlueprintName = "driver-tvOS"
-            ReferencedContainer = "container:driver.xcodeproj">
+            BuildableName = "deliverysomething-tvOS.app"
+            BlueprintName = "deliverysomething-tvOS"
+            ReferencedContainer = "container:deliverysomething.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "driver-tvOS.app"
-            BlueprintName = "driver-tvOS"
-            ReferencedContainer = "container:driver.xcodeproj">
+            BuildableName = "deliverysomething-tvOS.app"
+            BlueprintName = "deliverysomething-tvOS"
+            ReferencedContainer = "container:deliverysomething.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "driver-tvOS.app"
-            BlueprintName = "driver-tvOS"
-            ReferencedContainer = "container:driver.xcodeproj">
+            BuildableName = "deliverysomething-tvOS.app"
+            BlueprintName = "deliverysomething-tvOS"
+            ReferencedContainer = "container:deliverysomething.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
