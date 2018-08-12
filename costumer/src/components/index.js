@@ -1,26 +1,16 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-} from 'react-native';
+import React from "react";
 
-import { getData } from '../actions';
+import { StackNavigator } from "react-navigation";
 
-import {
-  StackNavigator,
-} from 'react-navigation';
-
-import Maps from './Maps';
+import Maps from "./Maps";
 
 const App = StackNavigator(
   {
-    Maps    : { screen: Maps },
+    Maps: { screen: Maps }
   },
   {
-    headerMode: 'none',
-  },
-)
+    headerMode: "none"
+  }
+);
 
 export default App;

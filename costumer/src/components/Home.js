@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React, { Component } from "react";
+import { Text } from "react-native";
 
-import { Container, Content, Button } from 'native-base';
+import { Container, Content, Button } from "native-base";
 
 export default class buttonExample extends Component {
   constructor(props) {
@@ -14,11 +10,11 @@ export default class buttonExample extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    
+
     return (
       <Container>
         <Content>
-          <Button onPress={() => navigate('Maps')}>
+          <Button onPress={() => navigate("Maps")}>
             <Text>Go to Maps</Text>
           </Button>
         </Content>
